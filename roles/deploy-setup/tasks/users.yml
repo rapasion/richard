@@ -37,7 +37,7 @@
 
 - name: Ensure Binary Path Exists
   file:
-    path: "{{ gml_source_path }}/bin/"
+    path: "{{ source_path }}/bin/"
     state: directory
     owner: "{{ code_user }}"
     group: "{{ code_user }}"
