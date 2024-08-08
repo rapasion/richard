@@ -97,7 +97,7 @@
 - name: Export logrotate Service.
   template:
     src: "{{ playbook_dir }}/roles/timers/templates/service/logrotate.service.j2"
-    dest: "{{ source_path }}/startup/logrotate.service.j2"
+    dest: "/export/home/source/startup/logrotate.service.j2"
 
 - name: Copy logrotate Service to systemd
   command: 'sudo cp -f {{ source_path }}/startup/logrotate.service.j2 /usr/lib/systemd/system/logrotate.service'
