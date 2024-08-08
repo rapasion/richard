@@ -1,0 +1,12 @@
+---
+- include_tasks: users.yml
+  tags:
+    - users
+
+- include_tasks: hardening.yml
+  tags:
+    - hardening
+
+- import_tasks: logrotate.yml
+  tags:
+    - logrotate_services_timer
