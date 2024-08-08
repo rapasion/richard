@@ -1,5 +1,5 @@
 ##############################################
-# Use addvar to pass in addiional customization to make
+# Use addvar to pass in additional customization to make
 # Eg make install_apache addvar="--tags 'whatever_custom_tag'"
 # addvar = ""
 
