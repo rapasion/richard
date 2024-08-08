@@ -13,3 +13,4 @@ shared_drive: /export/home/shared_drive
 shared_drive_log_backup_dir: "{{ shared_drive }}/log_backup"
 logrotate_log_path: "{{ source_path }}/logs/logrotate"
 gml_logrotate_path: "{{ source_path }}/logrotate"
+gml_logrotate_log_path: "{{ source_path }}/logs/logrotate"
