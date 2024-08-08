@@ -79,57 +79,57 @@
   tags:
     - bash_profile
 
-- name: add UAT pamunixread and pamunixadm users to {{ code_user }} group
-  become: yes
-  become_user: root
-  become_method: sudo
-  user:
-    name: '{{ item }}'
-    groups: '{{ code_user }}'
-    append: yes
-  with_items:
-    - "pamunixread51"
-    - "pamunixread52"
-    - "pamunixread53"
-    - "pamunixread54"
-    - "pamunixread55"
-    - "pamunixadm51"
-    - "pamunixadm52"
-    - "pamunixadm53"
-    - "pamunixadm54"
-    - "pamunixadm55"
-  when:
-    - env is defined and env == 'uat'
-    - hospital == 'ktph' or cluster == 'ktph'
-
-- name: add UAT pamunixread and pamunixadm users to {{ code_user }} group (JHS)
-  become: yes
-  become_user: root
-  become_method: sudo
-  user:
-    name: '{{ item }}'
-    groups: '{{ code_user }}'
-    append: yes
-  with_items:
-    - "pamunixread51"
-    - "pamunixread52"
-    - "pamunixadm51"
-    - "pamunixadm52"
-  when:
-    - env is defined and env == 'uat'
-
-- name: add PRD pamunixread and pamunixadm users to {{ code_user }} group
-  become: yes
-  become_user: root
-  become_method: sudo
-  user:
-    name: '{{ item }}'
-    groups: '{{ code_user }}'
-    append: yes
-  with_items:
-    - "pamunixread1"
-    - "pamunixread2"
-    - "pamunixadm1"
-    - "pamunixadm2"
-  when:
-    - env is defined and env == 'prod'
+#- name: add UAT pamunixread and pamunixadm users to {{ code_user }} group
+#  become: yes
+#  become_user: root
+#  become_method: sudo
+#  user:
+#    name: '{{ item }}'
+#    groups: '{{ code_user }}'
+#    append: yes
+#  with_items:
+#    - "pamunixread51"
+#    - "pamunixread52"
+#    - "pamunixread53"
+#    - "pamunixread54"
+#    - "pamunixread55"
+#    - "pamunixadm51"
+#    - "pamunixadm52"
+#    - "pamunixadm53"
+#    - "pamunixadm54"
+#    - "pamunixadm55"
+#  when:
+#    - env is defined and env == 'uat'
+#    - hospital == 'ktph' or cluster == 'ktph'
+#
+#- name: add UAT pamunixread and pamunixadm users to {{ code_user }} group (JHS)
+#  become: yes
+#  become_user: root
+#  become_method: sudo
+#  user:
+#    name: '{{ item }}'
+#    groups: '{{ code_user }}'
+#    append: yes
+#  with_items:
+#    - "pamunixread51"
+#    - "pamunixread52"
+#    - "pamunixadm51"
+#    - "pamunixadm52"
+#  when:
+#    - env is defined and env == 'uat'
+#
+#- name: add PRD pamunixread and pamunixadm users to {{ code_user }} group
+#  become: yes
+#  become_user: root
+#  become_method: sudo
+#  user:
+#    name: '{{ item }}'
+#    groups: '{{ code_user }}'
+#    append: yes
+#  with_items:
+#    - "pamunixread1"
+#    - "pamunixread2"
+#    - "pamunixadm1"
+#    - "pamunixadm2"
+#  when:
+#    - env is defined and env == 'prod'
