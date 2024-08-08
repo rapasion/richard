@@ -36,7 +36,7 @@ alias sucspercent='sort | uniq -c | sort -n | $HOME/bin/percent.awk'
 alias sucspercentsorted='sort | uniq -c | sort -k2 | $HOME/bin/percent.awk'
 alias swapcolumns='awk "{ t = \$1; \$1 = \$2; \$2 = t; print; }"'
 
-export PATH={{ gml_source_path }}/bin:$PATH
+export PATH={{ source_path }}/bin:$PATH
 
 # PgBackRest...
 
