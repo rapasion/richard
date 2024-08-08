@@ -2,7 +2,7 @@
 
 - name: Check startup folder exists.
   stat:
-    path: "{{ gml_source_path }}/startup"
+    path: "{{ source_path }}/startup"
   register: register_startup_folder
 
 - name: Check {{ shared_drive }} if exists.
@@ -17,7 +17,7 @@
 
 - name: Check Timer Configuration Dir Exists
   stat:
-    path: "{{ gml_logrotate_path }}"
+    path: "{{ logrotate_path }}"
   register: register_gml_logrotate_path
 
 - name: Check Script Location Dir Exists
@@ -37,7 +37,7 @@
 
 - name: Create startup folder.
   file:
-    path: "{{ gml_source_path }}/startup"
+    path: "{{ source_path }}/startup"
     state: directory
     owner: "{{ code_user }}"
     group: "{{ code_user }}"
@@ -64,7 +64,7 @@
 
 - name: Ensure Timer Configuration Dir Exists
   file:
-    path: "{{ gml_logrotate_path }}"
+    path: "{{ logrotate_path }}"
     state: directory
     owner: "{{ code_user }}"
     group: "{{ code_user }}"
@@ -80,14 +80,14 @@
     mode: '0750'
   when: not register_script_location.stat.exists
 
-- name: Check {{ gml_logrotate_log_path }} folder exists.
+- name: Check {{ logrotate_log_path }} folder exists.
   stat:
-    path: "{{ gml_logrotate_log_path }}"
+    path: "{{ logrotate_log_path }}"
   register: register_logrotate_folder
 
-- name: Ensure {{ gml_logrotate_log_path }} Folder Exists
+- name: Ensure {{ logrotate_log_path }} Folder Exists
   file:
-    path: "{{ gml_logrotate_log_path }}"
+    path: "{{ logrotate_log_path }}"
     state: directory
     owner: "{{ code_user }}"
     group: "{{ code_user }}"
@@ -100,7 +100,7 @@
     dest: "{{ gml_source_path }}/startup/logrotate.service.j2"
 
 - name: Copy logrotate Service to systemd
-  command: 'sudo cp -f {{ gml_source_path }}/startup/logrotate.service.j2 /usr/lib/systemd/system/logrotate.service'
+  command: 'sudo cp -f {{ source_path }}/startup/logrotate.service.j2 /usr/lib/systemd/system/logrotate.service'
 
 - name: Create link from systemd - logrotate Service
   command: "{{ item }}"
@@ -113,10 +113,10 @@
 - name: Export logrotate Timer.
   template:
     src: "{{ playbook_dir }}/roles/timers/templates/timer/logrotate.timer.j2"
-    dest: "{{ gml_source_path }}/startup/logrotate.timer.j2"
+    dest: "{{ source_path }}/startup/logrotate.timer.j2"
 
 - name: Copy logrotate Timer to systemd
-  command: 'sudo cp -f {{ gml_source_path }}/startup/logrotate.timer.j2 /usr/lib/systemd/system/logrotate.timer'
+  command: 'sudo cp -f {{ source_path }}/startup/logrotate.timer.j2 /usr/lib/systemd/system/logrotate.timer'
 
 - name: Create link from systemd - logrotate Timer
   command: "{{ item }}"
