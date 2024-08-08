@@ -18,7 +18,7 @@
 - name: Check Timer Configuration Dir Exists
   stat:
     path: "{{ logrotate_path }}"
-  register: register_gml_logrotate_path
+  register: register_logrotate_path
 
 - name: Check Script Location Dir Exists
   stat:
@@ -69,7 +69,7 @@
     owner: "{{ code_user }}"
     group: "{{ code_user }}"
     mode: '0750'
-  when: not register_gml_logrotate_path.stat.exists
+  when: not register_logrotate_path.stat.exists
 
 - name: Ensure Script Location Dir Exists
   file:
